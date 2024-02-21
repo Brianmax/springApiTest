@@ -2,9 +2,11 @@ package org.example.springapitest.controller;
 
 import lombok.Getter;
 import org.example.springapitest.document.Usuario;
+import org.example.springapitest.dto.UsuarioDto;
 import org.example.springapitest.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,8 @@ public class UsuarioController {
     @GetMapping("/findAll")
     public Page<Usuario> findAll(Pageable pageable)
     {
-        return usuarioService.findAll(pageable);
+        Page<Usuario> usuarios = usuarioService.findAll(pageable);
+        System.out.println("Implementation for convert to DTO");
+        return usuarios;
     }
 }
